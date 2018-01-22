@@ -69,8 +69,8 @@ void seg_tree::update(int a, int b, int l, int r, int index, element x)
 	}
 	else
 	{
-		update(a, (a+b)/2, l, r, 2*index);
-		update((a+b)/2+1, b, l, r, 2*index+1);
+		update(a, (a+b)/2, l, r, 2*index, x);
+		update((a+b)/2+1, b, l, r, 2*index+1, x);
 		st[index] = combine(st[2*index], st[2*index+1]);
 	}
 }
