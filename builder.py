@@ -1,11 +1,13 @@
 import os
 import sys
 
-available = ['segtree.cpp', 'lazysegtree.cpp', 'sparsetable.cpp', 'stringhash.cpp']
+base_folder = "/Users/macbookpro/Documents/C++/Template/"
+
+available = ['segtree.cpp', 'lazysegtree.cpp', 'sparsetable.cpp', 'stringhash.cpp', 'zfunction.cpp']
 filename = (sys.argv[1])
 
 os.system("touch " + filename)
-os.system("less base.cpp > " + filename)
+os.system("less " + base_folder + "base.cpp > " + filename)
 
 while (True):
 	for i, name in enumerate(available):
@@ -15,6 +17,6 @@ while (True):
 	choice = int(choice)
 	if (choice < 0):
 		break
-	os.system("less " + available[choice] + " >> " + filename)
+	os.system("less " + base_folder + available[choice] + " >> " + filename)
 
-os.system("less main.cpp >> " + filename)
+os.system("less " + base_folder + "main.cpp >> " + filename)
