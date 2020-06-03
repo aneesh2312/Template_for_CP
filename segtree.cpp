@@ -18,6 +18,7 @@ class SegmentTree {
 		holderType function(holderType a, holderType b) {
 			holderType c;
 			c.val = 0;
+			c.ign = 0;
 			return c;
 		}
 
@@ -27,6 +28,7 @@ class SegmentTree {
 
 		void init(int a, int index) {
 			st[index].val = arr[a];
+			st[index].ign = 0;
 		} 
 
 		void build(int a, int b, int index) {

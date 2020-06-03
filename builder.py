@@ -3,8 +3,12 @@ import sys
 
 base_folder = "/Users/macbookpro/Documents/C++/Template/"
 
-available = ['segtree.cpp', 'lazysegtree.cpp', 'sparsetable.cpp', 'stringhash.cpp', 'zfunction.cpp']
-filename = (sys.argv[1])
+available = ['segtree.cpp', 'lazysegtree.cpp', 'sparsetable.cpp', 'stringhash.cpp', 'zfunction.cpp', 'geometry.cpp']
+filename = ""
+
+for i in range(1, len(sys.argv)):
+	filename += sys.argv[i]
+	filename += " "
 
 os.system("touch " + filename)
 os.system("less " + base_folder + "base.cpp > " + filename)

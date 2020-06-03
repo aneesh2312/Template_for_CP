@@ -19,6 +19,7 @@ class LazySegmentTree {
 			holderType c;
 			c.val = 0;
 			c.aux = 0;
+			c.ign = 0;
 			return c;
 		}
 
@@ -29,6 +30,7 @@ class LazySegmentTree {
 		void init(int a, int index) {
 			st[index].val = arr[a];
 			st[index].aux = 0;
+			st[index].ign = 0;
 		} 
 
 		bool auxInfoUpdate(int index) {
@@ -60,6 +62,7 @@ class LazySegmentTree {
 					update(avg(a, b)+1, b, 2*index+1, avg(a, b)+1, b, st[index].aux);
 					resetAux(index);
 				}
+				
 				update(a, avg(a, b), 2*index, l, r, val);
 				update(avg(a, b)+1, b, 2*index+1, l, r, val);
 				st[index] = function(st[2*index], st[2*index+1]);
@@ -72,6 +75,12 @@ class LazySegmentTree {
 			if (l <= a and b <= r) {
 				return st[index];
 			} else {
+				if (auxInfoUpdate(index)) {
+					update(a, avg(a, b), 2*index, a, avg(a, b), st[index].aux);
+					update(avg(a, b)+1, b, 2*index+1, avg(a, b)+1, b, st[index].aux);
+					resetAux(index);
+				}
+
 				holderType t1 = query(a, avg(a, b), 2*index, l, r);
 				holderType t2 = query(avg(a, b)+1, b, 2*index+1, l, r);
 				if (t1.ign)
